@@ -1,5 +1,5 @@
 // Write your helper functions here!
-require('isomorphic-fetch');
+// require('isomorphic-fetch');
 
 
 // await new Promise (resolve => {
@@ -67,6 +67,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let testInput = [pilot, copilot, fuelLevel, cargoLevel];
     validateInput(testInput);
 
+    document.querySelector(list);
+
     document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
     document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
     
@@ -93,7 +95,9 @@ async function myFetch() {
 
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
         response.json().then(function (json){
-            return response.json();
+            console.log("json: " + JSON.stringify(json));
+            console.log("response: " + response.json);
+            return json;
             // ??
         });
         });
@@ -104,12 +108,14 @@ async function myFetch() {
 function pickPlanet(planets) {
     let index = 0;
     index = Math.floor(Math.random() * 7);
+    console.log("planets" + planets);
     let planetChosen = planets[index];
+    
     return planetChosen;
 }
 
-module.exports.addDestinationInfo = addDestinationInfo;
-module.exports.validateInput = validateInput;
-module.exports.formSubmission = formSubmission;
-module.exports.pickPlanet = pickPlanet; 
-module.exports.myFetch = myFetch;
+// module.exports.addDestinationInfo = addDestinationInfo;
+// module.exports.validateInput = validateInput;
+// module.exports.formSubmission = formSubmission;
+// module.exports.pickPlanet = pickPlanet; 
+// module.exports.myFetch = myFetch;
