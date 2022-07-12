@@ -3,9 +3,10 @@
 
 <head>
     <title>Launch Checklist</title>
-    <script src="bundle.js"></script>
-    <script src="scriptHelper.js"></script>
-    <script src="script.js"></script>
+   
+     <script type="text/javascript" src="bundle.js"></script>
+     <script type="text/javascript" src="scriptHelper.js"></script>
+     <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css" />
 
 </head>
@@ -29,7 +30,7 @@
             <div class="formField">
                 <label>Cargo Mass (kg) <input type="text" name="cargoMass" /></label>
             </div>
-            <button id="formSubmit">Submit</button>
+            <button id="formSubmit" type="button" onclick="formSubmission(window.document)">Submit</button>
         </form>
     </div>
     <div id="launchStatusCheck">
@@ -44,7 +45,7 @@
         </div>
     </div>
     
-    </script>
+
 </body>
 
 </html>
