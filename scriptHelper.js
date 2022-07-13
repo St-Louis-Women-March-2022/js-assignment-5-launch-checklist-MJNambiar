@@ -2,16 +2,6 @@
 // require('isomorphic-fetch');
 
 
-//       list = screen.getByTestId(container, "faultyItems");
-//       h2 = screen.getByTestId(container, "launchStatus");
-//       pilotStatus = screen.getByTestId(container, "pilotStatus");
-//       copilotStatus = screen.getByTestId(container, "copilotStatus");
-//       fuelStatus = screen.getByTestId(container, "fuelStatus");
-//       cargoStatus = screen.getByTestId(container, "cargoStatus");
-//       missionTarget = screen.getByTestId(container, "missionTarget");
-//   });
-
-
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     let missionTarget = document.getElementById("missionTarget");
     missionTarget.innerHTML = `
@@ -26,24 +16,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                 <img src="${imageUrl}">`
 };
 
-// function alertUser() {
-//     // window.addEventListener("load", function() {
-//         // let form = document.querySelector("formSubmit");
-//         // console.log("form: " + form);
-//         window.addEventListener("submit", function(event) {
-//             let pilot = document.getElementById("pilotName");
-//             let copilot = document.getElementById("copilotName");
-//             let fuelLevel = document.getElementById("fuelLevel");
-//             let cargoLevel = document.getElementById("cargoMass");
-
-//             if (pilot.value === "" || copilot.value === "" || fuelLevel.value === "" || cargoLevel.value === "") {
-//                 alert("All fields are required.");
-//                 console.log("in alert user: ");
-//                 event.preventDefault();
-//             }
-//         });
-//     // });
-// };
 
 function validateInput(testInput) {
     let numberInput = Number(testInput);
@@ -60,12 +32,16 @@ function validateInput(testInput) {
 
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+   
+    // form.addEventListener("submit", function(event) {
 
-    // window.addEventListener("submit", function(event) {
-         pilot = document.getElementById("pilotName");
-         copilot = document.getElementById("copilotName");
-         fuelLevel = document.getElementById("fuelLevel");
-         cargoLevel = document.getElementById("cargoMass");
+        list = document.querySelector("faultyItems");
+        let form = document.querySelector("form");
+       
+        pilot = form.elements["pilotName"].value;
+        copilot = form.elements["copilotName"].value;
+        fuelLevel = form.elements["fuelLevel"].value;
+        cargoLevel = form.elements["cargoMass"].value;
        
         if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty") {
             alert("All fields are required.");
@@ -80,8 +56,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             return;
         };
 
-//to do: put 34-37 at beg of form submission
-//if (validateInput(pilot) === "Empty" || ...all other variables...then plug in my alert 
+        console.log("got to after conditionals for checking submit");
+
 
         // document.querySelector(list);
         // do i need to re-include list?
@@ -109,7 +85,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 async function myFetch() {
     let planetsReturned;
-    console.log('are you in ther?: ')
 
     return await fetch("https://handlers.education.launchcode.org/static/planets.json")
     .then( function(response) {
@@ -124,7 +99,6 @@ function pickPlanet(planets) {
     let index = 0;
     index = Math.floor(Math.random() * 7);
     let planetChosen = planets[index];
-    console.log("planetChosen: " + planetChosen);
     
     return planetChosen;
 }
